@@ -41,7 +41,38 @@
   pod "Yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
 
 ```
+
 在在iOS原生代码所在的目录中（也就是`.xcodeproj`文件所在的目录）构建 Podfile文件 
-` pod init` 然后 `pod install`
-###嵌入原生 
-1. 编写JS 文件，并注册我们的`modules`
+`pod init` 然后 `pod install` 安装依赖文件包
+
+### 嵌入原生 
+
+
+1. 编写JS 文件，并注册我们的`modules` 
+ 
+```
+// 整体js模块的名称
+AppRegistry.registerComponent('RNHighScores', () => RNHighScores);
+```
+2. 原生调用JS 模块
+
+
+```
+NSURL *jsCodeLocation;
+  
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                        moduleName:@"Hello"
+                                                 initialProperties:nil
+                                                     launchOptions:nil];
+  UIViewController *vc = [[UIViewController alloc] init];
+  vc.view = rootView;
+  [self presentViewController:vc animated:YES completion:nil];
+```
+
+### 注意
+
+Note that RCTRootView initWithURL starts up a new JSC VM. To save resources and simplify the communication between RN views in different parts of your native app, you can have multiple views powered by React Native that are associated with a single JS runtime. To do that, instead of using [RCTRootView alloc] initWithURL, use RCTBridge initWithBundleURL to create a bridge and then use RCTRootView initWithBridge.
+
+When moving your app to production, the NSURL can point to a pre-bundled file on disk via something like [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];. You can use the react-native-xcode.sh script in node_modules/react-native/packager/ to generate that pre-bundled file.
