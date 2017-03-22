@@ -1249,6 +1249,10 @@ var _JFList = require(406                 ); // 406 = ./Component/JFList
 
 var _JFList2 = babelHelpers.interopRequireDefault(_JFList);
 
+var _JFBounce = require(407                   ); // 407 = ./Component/JFBounce
+
+var _JFBounce2 = babelHelpers.interopRequireDefault(_JFBounce);
+
 var Hello = function (_Component) {
   babelHelpers.inherits(Hello, _Component);
 
@@ -1260,27 +1264,7 @@ var Hello = function (_Component) {
   babelHelpers.createClass(Hello, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        _reactNative.View,
-        { style: styles.container },
-        _react2.default.createElement(
-          _reactNative.Text,
-          { style: styles.welcome },
-          'Welcome to React Native!'
-        ),
-        _react2.default.createElement(
-          _reactNative.Text,
-          { style: styles.instructions },
-          'To get started, edit index.ios.js'
-        ),
-        _react2.default.createElement(
-          _reactNative.Text,
-          { style: styles.instructions },
-          'Press Cmd+R to reload,',
-          '\n',
-          'Cmd+D or shake for dev menu'
-        )
-      );
+      return _react2.default.createElement(_JFBounce2.default, null);
     }
   }]);
   return Hello;
@@ -1309,7 +1293,7 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 _reactNative.AppRegistry.registerComponent('Hello', function () {
-  return _JFList2.default;
+  return Hello;
 });
 }, 0, null, "Hello/index.ios.js");
 __d(/* react/react.js */function(global, require, module, exports) {'use strict';
@@ -46602,6 +46586,69 @@ var JFList = function (_Component) {
 
 exports.default = JFList;
 }, 406, null, "Hello/Component/JFList.js");
+__d(/* Hello/Component/JFBounce.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require(12     ); // 12 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(42            ); // 42 = react-native
+
+var JFBounce = function (_Component) {
+  babelHelpers.inherits(JFBounce, _Component);
+
+  function JFBounce(props) {
+    babelHelpers.classCallCheck(this, JFBounce);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (JFBounce.__proto__ || Object.getPrototypeOf(JFBounce)).call(this, props));
+
+    _this.state = {
+      bounceValue: new _reactNative.Animated.Value(0.7)
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(JFBounce, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_reactNative.Animated.Image, { source: require(405                 ), // 405 = ../img/favicon.png
+        shouldRasterizeIOS: true,
+        style: { flex: 1, transform: [{ scale: this.state.bounceValue }] }
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      requestAnimationFrame(function () {
+        _this2._animateIn();
+      });
+    }
+  }, {
+    key: '_animateIn',
+    value: function _animateIn() {
+      _reactNative.Animated.spring(this.state.bounceValue, {
+        toValue: 0.4,
+        friction: 1
+      }).start(this._animateOut);
+    }
+  }, {
+    key: '_animateOut',
+    value: function _animateOut() {
+      _reactNative.Animated.spring(this.state.bounceValue, {
+        toValue: 0.7,
+        friction: 1
+      }).start(this._animateIn);
+    }
+  }]);
+  return JFBounce;
+}(_react.Component);
+
+exports.default = JFBounce;
+}, 407, null, "Hello/Component/JFBounce.js");
 ;require(216);
 ;require(0);
 //# sourceMappingURL=index.ios.map

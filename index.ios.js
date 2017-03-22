@@ -15,10 +15,13 @@ import {
 import JFFlex from  './Component/JFFlex';
 import JFScrollView from './Component/JFScrollView';
 import JFList from './Component/JFList';
+import JFBounce from './Component/JFBounce';
+
 
 export default class Hello extends Component {
   render() {
     return (
+      /*
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
@@ -31,6 +34,9 @@ export default class Hello extends Component {
           Cmd+D or shake for dev menu
         </Text>
       </View>
+      */
+
+      <JFBounce />
     );
   }
 }
@@ -54,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Hello', () => JFList);
+AppRegistry.registerComponent('Hello', () => Hello);
