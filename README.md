@@ -73,6 +73,6 @@ NSURL *jsCodeLocation;
 
 ### 注意
 
-Note that RCTRootView initWithURL starts up a new JSC VM. To save resources and simplify the communication between RN views in different parts of your native app, you can have multiple views powered by React Native that are associated with a single JS runtime. To do that, instead of using [RCTRootView alloc] initWithURL, use RCTBridge initWithBundleURL to create a bridge and then use RCTRootView initWithBridge.
+Note that `RCTRootView initWithURL` starts up a new `JSC VM`. To save resources and simplify the communication between `RN `views in different parts of your native app, you can have multiple views powered by React Native that are associated with a single `JS runtime`. To do that, instead of using `[RCTRootView alloc] initWithURL`, use `RCTBridge initWithBundleURL` to create a bridge and then use `RCTRootView initWithBridge`.
 
-When moving your app to production, the NSURL can point to a pre-bundled file on disk via something like [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];. You can use the react-native-xcode.sh script in node_modules/react-native/packager/ to generate that pre-bundled file.
+When moving your app to production, the `NSURL `can point to a pre-bundled file on disk via something like `[[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];`. You can use the `react-native-xcode.sh `script in `node_modules/react-native/packager/ `to generate that` pre-bundled file`.
