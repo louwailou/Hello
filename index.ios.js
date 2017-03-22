@@ -36,7 +36,7 @@ export default class Hello extends Component {
       </View>
       */
 
-      <JFList />
+      <JFFlex />
     );
   }
 }
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Hello', () => JFList);
+AppRegistry.registerComponent('Hello', () => JFFlex);

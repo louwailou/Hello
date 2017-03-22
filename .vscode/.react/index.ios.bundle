@@ -1264,7 +1264,7 @@ var Hello = function (_Component) {
   babelHelpers.createClass(Hello, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_JFList2.default, null);
+      return _react2.default.createElement(_JFFlex2.default, null);
     }
   }]);
   return Hello;
@@ -1293,7 +1293,7 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 _reactNative.AppRegistry.registerComponent('Hello', function () {
-  return _JFList2.default;
+  return _JFFlex2.default;
 });
 }, 0, null, "Hello/index.ios.js");
 __d(/* react/react.js */function(global, require, module, exports) {'use strict';
@@ -46428,9 +46428,17 @@ var _reactNative = require(42            ); // 42 = react-native
 var JFFlex = function (_Component) {
   babelHelpers.inherits(JFFlex, _Component);
 
-  function JFFlex() {
+  function JFFlex(props) {
     babelHelpers.classCallCheck(this, JFFlex);
-    return babelHelpers.possibleConstructorReturn(this, (JFFlex.__proto__ || Object.getPrototypeOf(JFFlex)).apply(this, arguments));
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (JFFlex.__proto__ || Object.getPrototypeOf(JFFlex)).call(this, props));
+
+    _this.state = {
+      "name": "点我",
+      "age": 100,
+      "sex": "男"
+    };
+    return _this;
   }
 
   babelHelpers.createClass(JFFlex, [{
@@ -46441,8 +46449,30 @@ var JFFlex = function (_Component) {
         { style: { flex: 1 } },
         _react2.default.createElement(_reactNative.View, { style: { flex: 1, backgroundColor: 'powderblue' } }),
         _react2.default.createElement(_reactNative.View, { style: { flex: 2, backgroundColor: 'skyblue' } }),
-        _react2.default.createElement(_reactNative.View, { style: { flex: 3, backgroundColor: 'steelblue' } })
+        _react2.default.createElement(_reactNative.View, { style: { flex: 3, backgroundColor: 'steelblue' } }),
+        _react2.default.createElement(
+          _reactNative.TouchableHighlight,
+          { style: { backgroundColor: 'red', height: 90 },
+            onPress: this.changeState.bind(this)
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            null,
+            ' ',
+            this.state.name
+          )
+        )
       );
+    }
+  }, {
+    key: 'changeState',
+    value: function changeState() {
+      console.log(this.state);
+      this.setState({
+        "name": "点你"
+      });
+      console.log("after");
+      console.log(this.state);
     }
   }]);
   return JFFlex;
@@ -46557,43 +46587,12 @@ var JFList = function (_Component) {
         return r1 !== r2;
       } });
     _this.state = {
-      dataSource: ds.cloneWithRows(['John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'])
+      dataSource: ds.cloneWithRows(['John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin', 'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin', 'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'])
     };
     return _this;
   }
 
   babelHelpers.createClass(JFList, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _reactNative.View,
-        { style: { flex: 1, paddingTop: 22 } },
-        _react2.default.createElement(_reactNative.ListView, {
-          dataSource: this.state.dataSource,
-
-          renderRow: function renderRow(rowData, sectionID, rowID, hightLight) {
-            return _react2.default.createElement(
-              _reactNative.View,
-              { style: { flex: 1 } },
-              _react2.default.createElement(
-                _reactNative.Text,
-                { style: { backgroundColor: 'red', height: 44 } },
-                '\u5185\u5BB9\u4E3A:',
-                rowData,
-                ',section = ',
-                sectionID,
-                ',row = ',
-                rowID,
-                ',hightLight = ',
-                hightLight,
-                ' '
-              )
-            );
-          }
-        })
-      );
-    }
-  }, {
     key: 'renderRowData',
     value: function renderRowData(rowData, sectionID, rowID, hightLight) {
       return _react2.default.createElement(
@@ -46601,7 +46600,7 @@ var JFList = function (_Component) {
         { style: { flex: 1 } },
         _react2.default.createElement(
           _reactNative.Text,
-          { style: { backgroundColor: 'red', height: 44 } },
+          { style: { backgroundColor: 'red', height: 50 } },
           '\u5185\u5BB9\u4E3A:',
           rowData,
           ',section = ',
@@ -46612,6 +46611,40 @@ var JFList = function (_Component) {
           hightLight,
           ' '
         )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: { flex: 1, paddingTop: 22 } },
+        _react2.default.createElement(_reactNative.ListView, {
+          dataSource: this.state.dataSource,
+
+          renderRow: this.renderRowData.bind(this),
+          initialListSize: 10,
+          onChangeVisibleRows: function onChangeVisibleRows(visibleRows, changeRows) {
+            console.log('vis' + visibleRows);
+            console.log(changeRows);
+          },
+          renderHeader: function renderHeader() {
+            return _react2.default.createElement(
+              _reactNative.Text,
+              { style: { flex: 1, backgroundColor: 'green' } },
+              ' \u8FD9\u662Fheader'
+            );
+          },
+          renderSectionHeader: function renderSectionHeader(sectionData, sectionID) {
+            return _react2.default.createElement(
+              _reactNative.Text,
+              { style: { backgroundColor: 'yellow' } },
+              ' \u8FD9\u662FsectionHeader ',
+              sectionData,
+              ' '
+            );
+          }
+        })
       );
     }
   }]);
