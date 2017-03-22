@@ -17,9 +17,23 @@ export default class JFList extends Component {
       <View style={{flex: 1, paddingTop: 22}}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
+         // renderRow={(rowData,sectionID,rowID) => <Text>{rowData}=={sectionID}=={rowID}</Text>}
+         renderRow = {(rowData,sectionID,rowID,hightLight) => {
+           return (
+      <View style = {{flex:1}}>
+     <Text style = {{backgroundColor:'red',height:44 }}>内容为:{rowData},section = {sectionID},row = {rowID},hightLight = {hightLight} </Text>
+      </View>
+    )
+         }}
         />
       </View>
     );
+  }
+  renderRowData (rowData,sectionID,rowID,hightLight) {
+    return (
+      <View style = {{flex:1}}>
+     <Text style = {{backgroundColor:'red',height:44 }}>内容为:{rowData},section = {sectionID},row = {rowID},hightLight = {hightLight} </Text>
+      </View>
+    )
   }
 }

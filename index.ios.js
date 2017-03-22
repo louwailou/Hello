@@ -36,7 +36,7 @@ export default class Hello extends Component {
       </View>
       */
 
-      <JFBounce />
+      <JFList />
     );
   }
 }
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Hello', () => Hello);
+AppRegistry.registerComponent('Hello', () => JFList);

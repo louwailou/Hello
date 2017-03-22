@@ -1264,7 +1264,7 @@ var Hello = function (_Component) {
   babelHelpers.createClass(Hello, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_JFBounce2.default, null);
+      return _react2.default.createElement(_JFList2.default, null);
     }
   }]);
   return Hello;
@@ -1293,7 +1293,7 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 _reactNative.AppRegistry.registerComponent('Hello', function () {
-  return Hello;
+  return _JFList2.default;
 });
 }, 0, null, "Hello/index.ios.js");
 __d(/* react/react.js */function(global, require, module, exports) {'use strict';
@@ -46570,14 +46570,48 @@ var JFList = function (_Component) {
         { style: { flex: 1, paddingTop: 22 } },
         _react2.default.createElement(_reactNative.ListView, {
           dataSource: this.state.dataSource,
-          renderRow: function renderRow(rowData) {
+
+          renderRow: function renderRow(rowData, sectionID, rowID, hightLight) {
             return _react2.default.createElement(
-              _reactNative.Text,
-              null,
-              rowData
+              _reactNative.View,
+              { style: { flex: 1 } },
+              _react2.default.createElement(
+                _reactNative.Text,
+                { style: { backgroundColor: 'red', height: 44 } },
+                '\u5185\u5BB9\u4E3A:',
+                rowData,
+                ',section = ',
+                sectionID,
+                ',row = ',
+                rowID,
+                ',hightLight = ',
+                hightLight,
+                ' '
+              )
             );
           }
         })
+      );
+    }
+  }, {
+    key: 'renderRowData',
+    value: function renderRowData(rowData, sectionID, rowID, hightLight) {
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: { flex: 1 } },
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: { backgroundColor: 'red', height: 44 } },
+          '\u5185\u5BB9\u4E3A:',
+          rowData,
+          ',section = ',
+          sectionID,
+          ',row = ',
+          rowID,
+          ',hightLight = ',
+          hightLight,
+          ' '
+        )
       );
     }
   }]);
