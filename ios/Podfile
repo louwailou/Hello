@@ -1,0 +1,33 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Hello' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for Hello
+
+  target 'Hello-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'HelloTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'Hello-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for Hello-tvOS
+
+  target 'Hello-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
