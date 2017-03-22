@@ -16,22 +16,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//  NSURL *jsCodeLocation;
-//
-//  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-//
-//  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-//                                                      moduleName:@"Hello"
-//                                               initialProperties:nil
-//                                                   launchOptions:launchOptions];
-  ViewController * vc = [[ViewController alloc] init];
+  NSURL *jsCodeLocation;
+
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                      moduleName:@"Hello"
+                                               initialProperties:nil
+                                                   launchOptions:launchOptions];
+  //ViewController * vc = [[ViewController alloc] init];
   
-  vc.view.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  //vc.view.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//  UIViewController *rootViewController = [UIViewController new];
-//  rootViewController = vc;
-  self.window.rootViewController = vc;
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
 }
