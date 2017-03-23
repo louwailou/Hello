@@ -16,8 +16,12 @@ import JFFlex from  './Component/JFFlex';
 import JFScrollView from './Component/JFScrollView';
 import JFList from './Component/JFList';
 import JFBounce from './Component/JFBounce';
-
-
+import JFFlexC from './Component/JFFlexC';
+import JFFlexB from './Component/JFFlexB';
+import JFFetch from './Component/JFFetch';
+import JFParallaxScrollView from './Component/JFParallaxScrollView';
+import JFStorage from './Component/JFStore';
+import JFMainPage from './MainTab/MainPage';
 export default class Hello extends Component {
   render() {
     return (
@@ -36,7 +40,7 @@ export default class Hello extends Component {
       </View>
       */
 
-      <JFFlex />
+      <JFMainPage />
     );
   }
 }
@@ -60,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Hello', () => JFFlex);
+AppRegistry.registerComponent('Hello', () => Hello);
